@@ -3,11 +3,14 @@ package ru.sakaev.backend.service;
 import ru.sakaev.backend.model.Protocol;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProtocolService {
-    Protocol getProtocolById(Long id);
-
+    Protocol createProtocol(Protocol protocol);
+    Optional<Protocol> getProtocolById(Long id);
     List<Protocol> getAllProtocols();
+    Protocol updateProtocol(Long id, Protocol protocol);
+    void deleteProtocol(Long id);
 
-    // Другие методы, если нужно
+    void deleteProtocolById(Long id);
 }

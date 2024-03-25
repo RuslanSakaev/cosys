@@ -20,8 +20,7 @@ public class GymnasticsScoringService {
     public double calculateTechnicalScore(List<Double> executionScores, List<Double> deductions) {
         double totalExecutionScore = calculateTotalScore(executionScores);
         double totalDeductions = calculateTotalDeductions(deductions);
-        double finalExecutionScore = totalExecutionScore - totalDeductions;
-        return finalExecutionScore;
+        return totalExecutionScore - totalDeductions;
     }
 
     // Метод для подсчета общей суммы оценок
@@ -44,8 +43,7 @@ public class GymnasticsScoringService {
 
     // Метод для определения итоговой оценки
     public double calculateFinalScore(double technicalScore, double artisticScore, double riskScore) {
-        double totalScore = (technicalScore + artisticScore + riskScore) / 3.0;
-        return totalScore;
+        return (technicalScore + artisticScore + riskScore) / 3.0;
     }
 
     // Пример метода для сохранения оценки в базе данных

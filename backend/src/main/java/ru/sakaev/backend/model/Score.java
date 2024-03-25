@@ -4,13 +4,12 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "scores")
 public class Score {
 
-    // Геттеры и сеттеры
-    @Setter
-    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,8 +17,14 @@ public class Score {
     @Column(name = "value")
     private Double value;
 
-    @Getter
-    @Setter
+    @Column(name = "final_score")
     private double finalScore;
+
+    // Геттер и сеттер для участника оценки
+    @Setter
+    @Getter
+    @ManyToOne
+    @JoinColumn(name = "participant_id")
+    private Participant participant;
 
 }

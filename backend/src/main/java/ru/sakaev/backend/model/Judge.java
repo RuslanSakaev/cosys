@@ -1,7 +1,11 @@
 package ru.sakaev.backend.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "judges")
 public class Judge {
@@ -10,8 +14,13 @@ public class Judge {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "first_name")
+    private String firstName;
 
-    // Геттеры и сеттеры
+    @Column(name = "last_name")
+    private String lastName;
+
+    @Column(name = "specialization")
+    private String specialization;
+
 }

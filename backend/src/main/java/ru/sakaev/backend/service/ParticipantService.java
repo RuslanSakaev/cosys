@@ -3,11 +3,14 @@ package ru.sakaev.backend.service;
 import ru.sakaev.backend.model.Participant;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ParticipantService {
-    Participant getParticipantById(Long id);
-
+    Participant createParticipant(Participant participant);
+    Optional<Participant> getParticipantById(Long id);
     List<Participant> getAllParticipants();
+    Participant updateParticipant(Long id, Participant participant);
+    void deleteParticipant(Long id);
 
-    // Другие методы, если нужно
+    void deleteParticipantById(Long id);
 }
