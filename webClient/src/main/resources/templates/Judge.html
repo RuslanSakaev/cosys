@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Judge Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <!-- Judge Card -->
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">Judge Information</h5>
+        </div>
+        <div class="card-body">
+            <!-- Judge Profile Picture -->
+            <img th:src="@{/img/judge_profile.jpg}" class="card-img-top img-fluid" alt="Judge Profile">
+
+            <!-- Judge Basic Info -->
+            <div class="card-text">
+                <p>Name: John Doe</p>
+                <p>Email: john@example.com</p>
+                <p>Position: Chief Judge</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Profile Form -->
+    <div class="card mt-3">
+        <div class="card-header">
+            <h5 class="card-title">Edit Profile</h5>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" value="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" value="john@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="position">Position</label>
+                    <input type="text" class="form-control" id="position" value="Chief Judge">
+                </div>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Competitions Table -->
+    <div class="card mt-3">
+        <div class="card-header">
+            <h5 class="card-title">Competitions</h5>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Competition Name</th>
+                    <th>Date</th>
+                    <th>Result</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Competition 1</td>
+                    <td>2024-03-20</td>
+                    <td>2nd Place</td>
+                </tr>
+                <tr>
+                    <td>Competition 2</td>
+                    <td>2024-04-15</td>
+                    <td>1st Place</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

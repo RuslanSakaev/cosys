@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Страница соревнования</title>
+    <!-- Подключаем Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Программный продукт</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Главная</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Список соревнований</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Страница регистрации</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Название соревнования</h1>
+        <p class="lead">Описание соревнования.</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    Участники
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Участник 1</li>
+                    <li class="list-group-item">Участник 2</li>
+                    <li class="list-group-item">Участник 3</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    Судьи
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Судья 1</li>
+                    <li class="list-group-item">Судья 2</li>
+                    <li class="list-group-item">Судья 3</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            Протокол соревнования
+        </div>
+        <div class="card-body">
+            <!-- Таблица для отображения протокола соревнования -->
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Место</th>
+                    <th scope="col">Участник</th>
+                    <th scope="col">Оценка</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Участник 1</td>
+                    <td>9.5</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Участник 2</td>
+                    <td>9.2</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Участник 3</td>
+                    <td>8.9</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<footer class="footer mt-auto py-3 bg-light">
+    <div class="container">
+        <span class="text-muted">Контактные данные и ссылки на социальные сети.</span>
+    </div>
+</footer>
+
+<!-- Подключаем jQuery и Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

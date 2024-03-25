@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Страница участника</title>
+    <!-- Подключаем Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Навигационное меню -->
+</nav>
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="user_photo.jpg" class="img-fluid rounded-circle" alt="Фото участника">
+                </div>
+                <div class="col-md-9">
+                    <h5 class="card-title">Имя участника</h5>
+                    <p class="card-text">Дополнительная информация о пользователе.</p>
+                    <a href="#" class="btn btn-primary">Подробнее</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-4">
+        <div class="card-body">
+            <h5 class="card-title">Редактировать личные данные</h5>
+            <form>
+                <div class="form-group">
+                    <label for="name">Имя</label>
+                    <input type="text" class="form-control" id="name" placeholder="Введите имя">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email адрес</label>
+                    <input type="email" class="form-control" id="email" placeholder="Введите email">
+                </div>
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="card mt-4">
+        <div class="card-body">
+            <h5 class="card-title">Результаты участника</h5>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Название соревнования</th>
+                    <th>Дата</th>
+                    <th>Оценка</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Соревнование 1</td>
+                    <td>10.10.2023</td>
+                    <td>9.5</td>
+                </tr>
+                <tr>
+                    <td>Соревнование 2</td>
+                    <td>15.11.2023</td>
+                    <td>8.8</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+
+<!-- Подключаем jQuery и Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
