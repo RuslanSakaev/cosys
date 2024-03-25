@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import ru.sakaev.webclient.entity.Participant;
-import ru.sakaev.webclient.seriveces.ParticipantService;
+import ru.sakaev.webclient.services.ParticipantService;
 
 import java.util.List;
 

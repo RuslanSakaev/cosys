@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import ru.sakaev.webclient.entity.Judge;
-import ru.sakaev.webclient.seriveces.JudgeService;
+import ru.sakaev.webclient.services.JudgeService;
 
 import java.util.List;
 

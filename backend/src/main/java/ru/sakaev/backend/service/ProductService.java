@@ -18,13 +18,13 @@ import java.util.List; // Импорт класса List
 public class ProductService { // Объявление класса ProductService
 
     private final ProductRepository productRepository; // Объявление экземпляра ProductRepository
-    private final ProductQuantityPublisher publisher;
+    private final ProductQuantityPublisher  publisher;
     private final Logger logger = LoggerFactory.getLogger(ProductService.class); // Создание логгера
 
     @Autowired // Аннотация для автоматического внедрения зависимости
-    public ProductService(ProductRepository productRepository, Publisher publisher) { // Конструктор с параметром для внедрения ProductRepository
+    public ProductService(ProductRepository productRepository, ProductQuantityPublisher publisher) { // Конструктор с параметром для внедрения ProductRepository
         this.productRepository = productRepository; // Инициализация экземпляра ProductRepository
-        this.publisher = (ProductQuantityPublisher) publisher;
+        this.publisher = publisher;
     }
 
     @Transactional(readOnly = true) // Аннотация, определяющая транзакционное поведение метода

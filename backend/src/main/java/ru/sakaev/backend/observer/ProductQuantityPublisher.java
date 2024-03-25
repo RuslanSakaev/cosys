@@ -1,8 +1,11 @@
 package ru.sakaev.backend.observer;
 
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 // Класс для наблюдаемого объекта
 public class ProductQuantityPublisher {
     private final List<Observer> observers = new ArrayList<>();

@@ -1,14 +1,14 @@
-package ru.sakaev.webclient.seriveces.impl;
+package ru.sakaev.webclient.services.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import ru.sakaev.webclient.entity.Participant;
-import ru.sakaev.webclient.seriveces.ParticipantService;
+import ru.sakaev.webclient.services.ParticipantService;
 
 import java.util.List;
 
 @Service
-public abstract class ParticipantServiceImpl implements ParticipantService {
+public class ParticipantServiceImpl implements ParticipantService {
 
     private final WebClient webClient;
 
@@ -23,6 +23,21 @@ public abstract class ParticipantServiceImpl implements ParticipantService {
                 .retrieve()
                 .bodyToMono(Participant.class)
                 .block();
+    }
+
+    @Override
+    public void createParticipant(Participant participant) {
+
+    }
+
+    @Override
+    public void updateParticipant(Long id, Participant participant) {
+
+    }
+
+    @Override
+    public void deleteParticipant(Long id) {
+
     }
 
     @Override

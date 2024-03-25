@@ -1,14 +1,14 @@
-package ru.sakaev.webclient.seriveces.impl;
+package ru.sakaev.webclient.services.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import ru.sakaev.webclient.entity.Judge;
-import ru.sakaev.webclient.seriveces.JudgeService;
+import ru.sakaev.webclient.services.JudgeService;
 
 import java.util.List;
 
 @Service
-public abstract class JudgeServiceImpl implements JudgeService {
+public class JudgeServiceImpl implements JudgeService {
 
     private final WebClient webClient;
 
@@ -23,6 +23,21 @@ public abstract class JudgeServiceImpl implements JudgeService {
                 .retrieve()
                 .bodyToMono(Judge.class)
                 .block();
+    }
+
+    @Override
+    public void createJudge(Judge judge) {
+
+    }
+
+    @Override
+    public void updateJudge(Long id, Judge judge) {
+
+    }
+
+    @Override
+    public void deleteJudge(Long id) {
+
     }
 
     @Override

@@ -1,15 +1,16 @@
-package ru.sakaev.webclient.seriveces.impl;
+package ru.sakaev.webclient.services.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import ru.sakaev.webclient.entity.Competition;
-import ru.sakaev.webclient.seriveces.CompetitionService;
+import ru.sakaev.webclient.services.CompetitionService;
+
 import java.util.List;
 
 @Service
-public abstract class CompetitionServiceImpl implements CompetitionService {
+public class CompetitionServiceImpl implements CompetitionService {
 
-    private final WebClient webClient; // Здесь должен быть настроенный WebClient для взаимодействия с сервером
+    private final WebClient webClient; // WebClient для взаимодействия с сервером
 
     public CompetitionServiceImpl(WebClient webClient) {
         this.webClient = webClient;
@@ -34,5 +35,20 @@ public abstract class CompetitionServiceImpl implements CompetitionService {
                 .block();
     }
 
-    // Реализация других методов
+    @Override
+    public void createCompetition(Competition competition) {
+        // Логика создания соревнования
+    }
+
+    @Override
+    public void updateCompetition(Long id, Competition competition) {
+
+    }
+
+    @Override
+    public void deleteCompetition(Long id) {
+
+    }
+
+    // Другие методы интерфейса CompetitionService
 }

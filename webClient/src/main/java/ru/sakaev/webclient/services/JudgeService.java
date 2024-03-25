@@ -1,4 +1,4 @@
-package ru.sakaev.webclient.seriveces;
+package ru.sakaev.webclient.services;
 
 import ru.sakaev.webclient.entity.Judge;
 

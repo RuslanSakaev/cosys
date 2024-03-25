@@ -1,14 +1,14 @@
-package ru.sakaev.webclient.seriveces.impl;
+package ru.sakaev.webclient.services.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import ru.sakaev.webclient.entity.Secretary;
-import ru.sakaev.webclient.seriveces.SecretaryService;
+import ru.sakaev.webclient.services.SecretaryService;
 
 import java.util.List;
 
 @Service
-public abstract class SecretaryServiceImpl implements SecretaryService {
+public class SecretaryServiceImpl implements SecretaryService {
 
     private final WebClient webClient;
 
@@ -23,6 +23,21 @@ public abstract class SecretaryServiceImpl implements SecretaryService {
                 .retrieve()
                 .bodyToMono(Secretary.class)
                 .block();
+    }
+
+    @Override
+    public void createSecretary(Secretary secretary) {
+
+    }
+
+    @Override
+    public void updateSecretary(Long id, Secretary secretary) {
+
+    }
+
+    @Override
+    public void deleteSecretary(Long id) {
+
     }
 
     @Override

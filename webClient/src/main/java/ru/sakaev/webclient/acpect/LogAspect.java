@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Component
 public class LogAspect {
 
-    @Around("@annotation(ru.maliutin.shop.webclient.acpect.LogLeadTime)")
+    @Around("@annotation(ru.sakaev.webclient.acpect.LogLeadTime)")
     public Object logMethod(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("Вызван метод: " + joinPoint.getSignature().getName());
         long timeStart = LocalDateTime.now().getNano();

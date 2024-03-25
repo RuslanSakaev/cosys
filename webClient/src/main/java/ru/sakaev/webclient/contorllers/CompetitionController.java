@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import ru.sakaev.webclient.entity.Competition;
-import ru.sakaev.webclient.seriveces.CompetitionService;
+import ru.sakaev.webclient.services.CompetitionService;
 
 import java.util.List;
 

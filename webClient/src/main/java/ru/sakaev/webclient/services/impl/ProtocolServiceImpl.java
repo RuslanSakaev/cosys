@@ -1,14 +1,14 @@
-package ru.sakaev.webclient.seriveces.impl;
+package ru.sakaev.webclient.services.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import ru.sakaev.webclient.entity.Protocol;
-import ru.sakaev.webclient.seriveces.ProtocolService;
+import ru.sakaev.webclient.services.ProtocolService;
 
 import java.util.List;
 
 @Service
-public abstract class ProtocolServiceImpl implements ProtocolService {
+public class ProtocolServiceImpl implements ProtocolService {
 
     private final WebClient webClient;
 
@@ -23,6 +23,21 @@ public abstract class ProtocolServiceImpl implements ProtocolService {
                 .retrieve()
                 .bodyToMono(Protocol.class)
                 .block();
+    }
+
+    @Override
+    public void createProtocol(Protocol protocol) {
+
+    }
+
+    @Override
+    public void updateProtocol(Long id, Protocol protocol) {
+
+    }
+
+    @Override
+    public void deleteProtocol(Long id) {
+
     }
 
     @Override

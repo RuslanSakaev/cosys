@@ -41,7 +41,7 @@ public class IntegrationConfig {
      */
     @Bean
     @Transformer(inputChannel = "inputChanel", outputChannel = "fileWriterChanel")
-    public GenericTransformer<String, String> transformer(){
+    public static GenericTransformer<String, String> transformer(){
         return text -> text;
     }
 
@@ -51,7 +51,7 @@ public class IntegrationConfig {
      */
     @Bean
     @ServiceActivator(inputChannel = "fileWriterChanel")
-    public FileWritingMessageHandler messageHandler(){
+    public static FileWritingMessageHandler messageHandler(){
         String rootPath = System.getProperty("user.dir");
         FileWritingMessageHandler handler =
                 new FileWritingMessageHandler(new File(rootPath + "/web-client/files"));

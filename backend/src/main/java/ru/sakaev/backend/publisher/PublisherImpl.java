@@ -1,10 +1,12 @@
 package ru.sakaev.backend.publisher;
 
+import org.springframework.stereotype.Component;
 import ru.sakaev.backend.observer.Observer;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class PublisherImpl implements Publisher {
     private final List<Observer> observers = new ArrayList<>();
 
