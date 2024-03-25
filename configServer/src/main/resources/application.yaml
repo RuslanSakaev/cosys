@@ -10,7 +10,7 @@ spring:
       server:
         git:
           uri: https://github.com/RuslanSakaev/config.git
-          basedir: file://d:/tmp/shop
+          basedir: file:///home/lab/tmp/cos
           default-label: main
 management:
   endpoints:
