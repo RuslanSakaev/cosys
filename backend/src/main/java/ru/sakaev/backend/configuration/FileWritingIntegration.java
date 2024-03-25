@@ -1,24 +1,19 @@
 package ru.sakaev.backend.configuration;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.annotation.MessagingGateway;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.channel.DirectChannel;
-import org.springframework.integration.config.EnableIntegration;
 import org.springframework.integration.file.FileWritingMessageHandler;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.handler.annotation.Header;
-import org.springframework.stereotype.Component;
 
 import java.io.File;
 
-@Component
-@EnableIntegration
+@Configuration
 public class FileWritingIntegration {
-
-    @Autowired
-    private ProductGateway productGateway;
 
     @Bean
     public MessageChannel requestChannel() {
@@ -27,8 +22,8 @@ public class FileWritingIntegration {
 
     @Bean
     @ServiceActivator(inputChannel = "requestChannel")
-    public FileWritingMessageHandler fileWriter() {
-        FileWritingMessageHandler handler = new FileWritingMessageHandler(new File("D:/cosys/file"));
+    public FileWritingMessageHandler fileWriter(ProductGateway productGateway, @Value("${file.path}") String filePath) {
+        FileWritingMessageHandler handler = new FileWritingMessageHandler(new File(filePath));
         handler.setExpectReply(false);
         handler.setAppendNewLine(true);
         handler.setFileNameGenerator(message -> "request_" + System.currentTimeMillis() + ".txt");
