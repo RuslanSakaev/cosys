@@ -1,6 +1,5 @@
 package ru.sakaev.backend.configuration;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.annotation.MessagingGateway;
@@ -22,8 +21,8 @@ public class FileWritingIntegration {
 
     @Bean
     @ServiceActivator(inputChannel = "requestChannel")
-    public FileWritingMessageHandler fileWriter(ProductGateway productGateway, @Value("${file.path}") String filePath) {
-        FileWritingMessageHandler handler = new FileWritingMessageHandler(new File(filePath));
+    public FileWritingMessageHandler fileWriter(ProductGateway productGateway) {
+        FileWritingMessageHandler handler = new FileWritingMessageHandler(new File("/home/lab/file"));
         handler.setExpectReply(false);
         handler.setAppendNewLine(true);
         handler.setFileNameGenerator(message -> "request_" + System.currentTimeMillis() + ".txt");
