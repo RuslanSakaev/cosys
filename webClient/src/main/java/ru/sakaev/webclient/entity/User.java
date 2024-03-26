@@ -1,13 +1,15 @@
-package ru.sakaev.backend.model;
+package ru.sakaev.webclient.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
 @Getter
+@Setter
 @Entity
-@Table(name = "my_user") // Имя таблицы "my_user"
 public class User {
 
     @Id
@@ -17,5 +19,4 @@ public class User {
     private String username;
     private String password;
     private String roles;
-
 }

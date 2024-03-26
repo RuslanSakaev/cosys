@@ -1,0 +1,7 @@
+package ru.sakaev.webclient.repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import ru.sakaev.webclient.entity.Score;
+
+public interface ScoreRepository extends JpaRepository<Score, Long> {
+}

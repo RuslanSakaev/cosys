@@ -5,22 +5,33 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Aspect
 @Component
 public class LogAspect {
 
+    private static final Logger logger = Logger.getLogger(LogAspect.class.getName());
+
     @Around("@annotation(ru.sakaev.webclient.acpect.LogLeadTime)")
     public Object logMethod(ProceedingJoinPoint joinPoint) throws Throwable {
-        System.out.println("Вызван метод: " + joinPoint.getSignature().getName());
-        long timeStart = LocalDateTime.now().getNano();
+        Object proceed;
+        if (logger.isLoggable(Level.INFO)) {
+            logger.info("Вызван метод: " + joinPoint.getSignature().getName());
+            Instant startTime = Instant.now();
 
-        Object proceed = joinPoint.proceed();
+            proceed = joinPoint.proceed();
 
-        long timeFinish = LocalDateTime.now().getNano();
-        System.out.println("Метод выполнен за: " + ((timeFinish - timeStart)/1000000) + " миллисекунд.");
+            Instant finishTime = Instant.now();
+            long timeElapsed = Duration.between(startTime, finishTime).toMillis();
+            logger.info(String.format("Метод выполнен за: %d миллисекунд.", timeElapsed));
+        } else {
+            proceed = joinPoint.proceed();
+        }
         return proceed;
     }
-
 }
+

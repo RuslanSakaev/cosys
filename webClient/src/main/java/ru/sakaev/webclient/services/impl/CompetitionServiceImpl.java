@@ -1,54 +1,71 @@
 package ru.sakaev.webclient.services.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import ru.sakaev.webclient.entity.Competition;
+import ru.sakaev.webclient.repositories.CompetitionRepository;
 import ru.sakaev.webclient.services.CompetitionService;
 
-import java.util.List;
-
 @Service
-public class CompetitionServiceImpl implements CompetitionService {
+public class CompetitionServiceImpl extends CompetitionService {
 
-    private final WebClient webClient; // WebClient для взаимодействия с сервером
+    private static final String BASE_URL = "http://localhost:8080";
+    private static final String COMPETITIONS_ENDPOINT = "/api/competitions";
+    private static final String COMPETITION_BY_ID_ENDPOINT = COMPETITIONS_ENDPOINT + "/{id}";
 
-    public CompetitionServiceImpl(WebClient webClient) {
-        this.webClient = webClient;
+    private final WebClient webClient;
+
+    @Autowired
+    public CompetitionServiceImpl(CompetitionRepository competitionRepository, WebClient.Builder webClientBuilder) {
+        super(competitionRepository);
+        this.webClient = webClientBuilder.baseUrl(BASE_URL).build();
     }
 
     @Override
-    public Competition getCompetitionById(Long id) {
+    public Mono<Competition> getCompetitionById(Long id) {
         return webClient.get()
-                .uri("/competitions/{id}", id)
+                .uri(COMPETITION_BY_ID_ENDPOINT, id)
                 .retrieve()
-                .bodyToMono(Competition.class)
-                .block();
+                .bodyToMono(Competition.class);
     }
 
     @Override
-    public List<Competition> getAllCompetitions() {
+    public Flux<Competition> getAllCompetitions() {
         return webClient.get()
-                .uri("/competitions")
+                .uri(COMPETITIONS_ENDPOINT)
                 .retrieve()
-                .bodyToFlux(Competition.class)
-                .collectList()
-                .block();
+                .bodyToFlux(Competition.class);
     }
 
     @Override
-    public void createCompetition(Competition competition) {
-        // Логика создания соревнования
+    public Mono<Competition> createCompetition(Competition competition) {
+        return webClient.post()
+                .uri(COMPETITIONS_ENDPOINT)
+                .bodyValue(competition)
+                .retrieve()
+                .bodyToMono(Competition.class);
     }
 
     @Override
-    public void updateCompetition(Long id, Competition competition) {
-
+    public Mono<Void> updateCompetition(Long id, Competition competition) {
+        return webClient.put()
+                .uri(COMPETITION_BY_ID_ENDPOINT, id)
+                .bodyValue(competition)
+                .retrieve()
+                .toBodilessEntity()
+                .then();
     }
 
     @Override
-    public void deleteCompetition(Long id) {
-
+    public Mono<Void> deleteCompetition(Long id) {
+        return webClient.delete()
+                .uri(COMPETITION_BY_ID_ENDPOINT, id)
+                .retrieve()
+                .toBodilessEntity()
+                .then();
     }
-
-    // Другие методы интерфейса CompetitionService
 }
+
