@@ -2,13 +2,16 @@ package ru.sakaev.webclient.services.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import ru.sakaev.webclient.entity.Protocol;
 import ru.sakaev.webclient.services.ProtocolService;
 
-import java.util.List;
-
 @Service
 public class ProtocolServiceImpl implements ProtocolService {
+
+    private static final String PROTOCOLS_ENDPOINT = "/protocols";
+    private static final String PROTOCOL_BY_ID_ENDPOINT = PROTOCOLS_ENDPOINT + "/{id}";
 
     private final WebClient webClient;
 
@@ -17,38 +20,47 @@ public class ProtocolServiceImpl implements ProtocolService {
     }
 
     @Override
-    public Protocol getProtocolById(Long id) {
+    public Mono<Protocol> getProtocolById(Long id) {
         return webClient.get()
-                .uri("/protocols/{id}", id)
+                .uri(PROTOCOL_BY_ID_ENDPOINT, id)
                 .retrieve()
-                .bodyToMono(Protocol.class)
-                .block();
+                .bodyToMono(Protocol.class);
     }
 
     @Override
-    public void createProtocol(Protocol protocol) {
-
+    public Mono<Void> createProtocol(Protocol protocol) {
+        return webClient.post()
+                .uri(PROTOCOLS_ENDPOINT)
+                .bodyValue(protocol)
+                .retrieve()
+                .bodyToMono(Void.class)
+                .then();
     }
 
     @Override
-    public void updateProtocol(Long id, Protocol protocol) {
-
+    public Mono<Void> updateProtocol(Long id, Protocol protocol) {
+        return webClient.put()
+                .uri(PROTOCOL_BY_ID_ENDPOINT, id)
+                .bodyValue(protocol)
+                .retrieve()
+                .bodyToMono(Void.class)
+                .then();
     }
 
     @Override
-    public void deleteProtocol(Long id) {
-
+    public Mono<Void> deleteProtocol(Long id) {
+        return webClient.delete()
+                .uri(PROTOCOL_BY_ID_ENDPOINT, id)
+                .retrieve()
+                .bodyToMono(Void.class)
+                .then();
     }
 
     @Override
-    public List<Protocol> getAllProtocols() {
+    public Flux<Protocol> getAllProtocols() {
         return webClient.get()
-                .uri("/protocols")
+                .uri(PROTOCOLS_ENDPOINT)
                 .retrieve()
-                .bodyToFlux(Protocol.class)
-                .collectList()
-                .block();
+                .bodyToFlux(Protocol.class);
     }
-
-    // Реализация других методов
 }

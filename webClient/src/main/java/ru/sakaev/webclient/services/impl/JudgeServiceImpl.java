@@ -1,21 +1,21 @@
 package ru.sakaev.webclient.services.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import ru.sakaev.webclient.entity.Judge;
-import ru.sakaev.webclient.repositories.JudgeRepository;
 import ru.sakaev.webclient.services.JudgeService;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class JudgeServiceImpl extends JudgeService {
+public class JudgeServiceImpl implements JudgeService {
 
     private final WebClient webClient;
 
+    @Autowired
     public JudgeServiceImpl(WebClient webClient) {
-        super((JudgeRepository) webClient);
         this.webClient = webClient;
     }
 

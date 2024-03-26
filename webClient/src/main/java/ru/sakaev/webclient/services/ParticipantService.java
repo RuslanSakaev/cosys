@@ -1,41 +1,20 @@
 package ru.sakaev.webclient.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
 import ru.sakaev.webclient.entity.Participant;
-import ru.sakaev.webclient.repositories.ParticipantRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
-public class ParticipantService {
+public interface ParticipantService {
 
-    private final ParticipantRepository participantRepository;
+    List<Participant> getAllParticipants();
 
-    @Autowired
-    public ParticipantService(ParticipantRepository participantRepository) {
-        this.participantRepository = participantRepository;
-    }
+    Optional<Participant> getParticipantById(Long id);
 
-    public List<Participant> getAllParticipants() {
-        return participantRepository.findAll();
-    }
+    Mono<Void> createParticipant(Participant participant);
 
-    public Optional<Participant> getParticipantById(Long id) {
-        return participantRepository.findById(id);
-    }
+    Mono<Void> updateParticipant(Long id, Participant participant);
 
-    public Participant createParticipant(Participant participant) {
-        return participantRepository.save(participant);
-    }
-
-    public void updateParticipant(Long id, Participant participant) {
-        participant.setId(id);
-        participantRepository.save(participant);
-    }
-
-    public void deleteParticipant(Long id) {
-        participantRepository.deleteById(id);
-    }
+    Mono<Void> deleteParticipant(Long id);
 }

@@ -6,6 +6,7 @@ import ru.sakaev.webclient.entity.Score;
 import ru.sakaev.webclient.services.ScoreService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ScoreServiceImpl implements ScoreService {
@@ -17,27 +18,28 @@ public class ScoreServiceImpl implements ScoreService {
     }
 
     @Override
-    public Score getScoreById(Long id) {
-        return webClient.get()
+    public Optional<Score> getScoreById(Long id) {
+        return Optional.ofNullable(webClient.get()
                 .uri("/scores/{id}", id)
                 .retrieve()
                 .bodyToMono(Score.class)
-                .block();
+                .block());
     }
 
     @Override
-    public void createScore(Score score) {
-
+    public Score createScore(Score score) {
+        // Логика создания оценки
+        return score;
     }
 
     @Override
     public void updateScore(Long id, Score score) {
-
+        // Логика обновления оценки
     }
 
     @Override
     public void deleteScore(Long id) {
-
+        // Логика удаления оценки
     }
 
     @Override
@@ -49,6 +51,4 @@ public class ScoreServiceImpl implements ScoreService {
                 .collectList()
                 .block();
     }
-
-    // Реализация других методов
 }

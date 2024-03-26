@@ -10,7 +10,7 @@ import ru.sakaev.webclient.repositories.CompetitionRepository;
 import ru.sakaev.webclient.services.CompetitionService;
 
 @Service
-public class CompetitionServiceImpl extends CompetitionService {
+public class CompetitionServiceImpl implements CompetitionService {
 
     private static final String BASE_URL = "http://localhost:8080";
     private static final String COMPETITIONS_ENDPOINT = "/api/competitions";
@@ -20,7 +20,6 @@ public class CompetitionServiceImpl extends CompetitionService {
 
     @Autowired
     public CompetitionServiceImpl(CompetitionRepository competitionRepository, WebClient.Builder webClientBuilder) {
-        super(competitionRepository);
         this.webClient = webClientBuilder.baseUrl(BASE_URL).build();
     }
 
@@ -68,4 +67,3 @@ public class CompetitionServiceImpl extends CompetitionService {
                 .then();
     }
 }
-

@@ -26,18 +26,19 @@ public class SecretaryServiceImpl implements SecretaryService {
     }
 
     @Override
-    public void createSecretary(Secretary secretary) {
-
+    public Secretary createSecretary(Secretary secretary) {
+        // Implement your logic for creating a secretary
+        return secretary;
     }
 
     @Override
     public void updateSecretary(Long id, Secretary secretary) {
-
+        // Implement your logic for updating a secretary
     }
 
     @Override
     public void deleteSecretary(Long id) {
-
+        // Implement your logic for deleting a secretary
     }
 
     @Override
@@ -49,6 +50,4 @@ public class SecretaryServiceImpl implements SecretaryService {
                 .collectList()
                 .block();
     }
-
-    // Реализация других методов
 }

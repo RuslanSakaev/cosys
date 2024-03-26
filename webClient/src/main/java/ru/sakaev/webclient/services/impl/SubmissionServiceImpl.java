@@ -9,19 +9,23 @@ import ru.sakaev.webclient.repositories.SubmissionRepository;
 import ru.sakaev.webclient.services.SubmissionService;
 
 @Service
-public class SubmissionServiceImpl extends SubmissionService {
+public class SubmissionServiceImpl implements SubmissionService {
 
     private final SubmissionRepository submissionRepository;
 
     @Autowired
     public SubmissionServiceImpl(SubmissionRepository submissionRepository) {
-        super(submissionRepository); // Передаем submissionRepository в конструктор родительского класса
         this.submissionRepository = submissionRepository;
     }
 
     @Override
     public Flux<Submission> getAllSubmissions() {
         return submissionRepository.findAll();
+    }
+
+    @Override
+    public Mono<Submission> getSubmissionById(Long id) {
+        return null;
     }
 
     @Override
