@@ -5,6 +5,10 @@ spring:
   application:
     name: web
 
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/mydatabase
+
   config:
     import: configserver:http://localhost:8888
 management:
